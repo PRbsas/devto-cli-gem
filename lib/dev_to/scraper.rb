@@ -1,0 +1,2 @@
+class DevTo::Scraper
+end 
