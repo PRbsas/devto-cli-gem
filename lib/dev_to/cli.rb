@@ -10,7 +10,7 @@ class DevTo::CLI
   def list_posts
     puts "1. The 7 Most Popular DEV Posts from the Past Week" #title
     puts "dev.to staff" #author
-    puts "#icymi" #tags 
+    puts "#icymi" #tags
 
     puts "2. How to make time to repay your technical debt"
     puts "Blaine Osepchuk"
@@ -29,10 +29,11 @@ class DevTo::CLI
       input = gets.strip.downcase
       if input == "list"
         list_posts
-      #elsif input.to_i.between?(1, Post.all.size)
-        #find Post and show details, content
+      elsif input.to_i.between?(1, DevTo::Post.all.size)
+        #find Post by number and show details, content
+        post = DevTo::Post.find(input) # and print
+        puts "#{post.title}"
       end
-
     end
     puts "See you soon for more DEV Posts"
   end
