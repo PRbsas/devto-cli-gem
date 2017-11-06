@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/dev_to.rb'
+
+puts "Hello"

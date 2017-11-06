@@ -1,5 +1,4 @@
-require "dev_to/version"
+require_relative '../config/environment'
 
 module DevTo
-  # Your code goes here...
 end
