@@ -1,0 +1,2 @@
+class DevTo::Post
+end
