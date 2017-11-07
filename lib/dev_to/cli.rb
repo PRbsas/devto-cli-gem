@@ -11,6 +11,10 @@ class DevTo::CLI
   def list_posts
     DevTo::Post.all.each.with_index(1) do |post, i|
       puts "#{i}. #{post.title} - #{post.author}"
+      puts "#{post.tags}"
+      puts "\u{1F4AC} #{post.comments}  \u{1F499} #{post.likes}"
+      puts "#{post.url}"
+      puts
     end
   end
 
