@@ -1,6 +1,7 @@
 class DevTo::CLI
 
   def call
+    DevTo::Scraper.new.make_posts
     puts "< Welcome to your DEV Community FEED >"
     puts
     list_posts
@@ -8,13 +9,9 @@ class DevTo::CLI
   end
 
   def list_posts
-    puts "1. The 7 Most Popular DEV Posts from the Past Week" #title
-    puts "dev.to staff" #author
-    puts "#icymi" #tags
-
-    puts "2. How to make time to repay your technical debt"
-    puts "Blaine Osepchuk"
-    puts "#efficiency #quality #management #technicaldeb"
+    DevTo::Post.all.each.with_index(1) do |post, i|
+      puts "#{i}. #{post.title} - #{post.author}"
+    end
   end
 
   def start
