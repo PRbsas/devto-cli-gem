@@ -18,6 +18,16 @@ class DevTo::CLI
     end
   end
 
+  def print_post(post)
+    puts "#{post.title} - #{post.author}"
+    puts "#{post.tags}"
+    puts "#{post.content}"
+    puts
+    puts "\u{1F4AC} #{post.comments}  \u{1F499} #{post.likes}"
+    puts "#{post.url}"
+    puts
+  end
+
   def start
     input = nil
     while input != "exit"
@@ -31,9 +41,8 @@ class DevTo::CLI
       if input == "list"
         list_posts
       elsif input.to_i.between?(1, DevTo::Post.all.size)
-        #find Post by number and show details, content
-        post = DevTo::Post.find(input) # and print
-        puts "#{post.title}"
+        post = DevTo::Post.find(input)
+        print_post(post)
       end
     end
     puts "See you soon for more DEV Posts"

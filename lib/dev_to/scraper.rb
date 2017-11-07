@@ -18,6 +18,8 @@ class DevTo::Scraper
       post.url = "https://dev.to" + data.search("a").last.attr("href")
       post.comments = data.search(".engagement-count-number").first.text.strip
       post.likes = data.search(".engagement-count-number").last.text.strip
+
+      post.content = Nokogiri::HTML(open("#{post.url}")).search("body #article-body").text.strip
     end
   end
 end
