@@ -35,7 +35,7 @@ class DevTo::CLI
     post = nil
     while input != "exit"
       puts
-      puts "< Choose a post NUMBER to read it >"
+      puts "< Type post NUMBER to read it >"
       puts "< Type LIST to see the posts again >"
       puts "< Type EXIT to end program >"
 
@@ -47,7 +47,10 @@ class DevTo::CLI
         print_post(post)
         puts "< Type OPEN to see it in the browser >"
         post
-      elsif input == "open"
+      elsif input.to_i > DevTo::Post.all.size
+        puts
+        puts " -------- Please select a valid option:"
+      elsif input == "open" && post != nil
           system("open #{post.url}")
       end
     end
