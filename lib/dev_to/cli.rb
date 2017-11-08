@@ -2,7 +2,8 @@ class DevTo::CLI
 
   def call
     DevTo::Scraper.new.make_posts
-    puts "< Welcome to your DEV Community FEED >"
+    puts
+    puts "< Welcome to your DEV Community FEED >".colorize(:color => :light_white, :background => :red)
     puts
     list_posts
     start
@@ -10,32 +11,33 @@ class DevTo::CLI
 
   def list_posts
     DevTo::Post.all.each.with_index(1) do |post, i|
-      puts "#{i}. #{post.title} - #{post.author}"
-      puts "#{post.tags}"
-      puts "\u{1F4AC} #{post.comments}  \u{1F499} #{post.likes}"
-      puts "#{post.url}"
       puts
+      puts "#{i}. #{post.title} - #{post.author}"
+      puts " -------- #{post.tags.join(" · ")}     \u{1F4AC} #{post.comments}  \u{2764} #{post.likes}"
     end
   end
 
   def print_post(post)
-    puts "#{post.title} - #{post.author}"
-    puts "#{post.tags}"
+    puts
+    puts
+    puts "#{post.title}".colorize(:color => :light_white, :background => :red)
+    puts " ---- #{post.author}"
+    puts
     puts "#{post.content}"
     puts
-    puts "\u{1F4AC} #{post.comments}  \u{1F499} #{post.likes}"
-    puts "#{post.url}"
+    puts " ---- #{post.tags.join(" · ")}     \u{1F4AC} #{post.comments}  \u{2764} #{post.likes}"
+    puts " ---- #{post.url}"
     puts
   end
 
   def start
     input = nil
+    post = nil
     while input != "exit"
       puts
-      puts "Choose a post NUMBER to read it"
-      puts
-      puts "Type LIST to see the posts again"
-      puts "Type EXIT to end program"
+      puts "< Choose a post NUMBER to read it >"
+      puts "< Type LIST to see the posts again >"
+      puts "< Type EXIT to end program >"
 
       input = gets.strip.downcase
       if input == "list"
@@ -43,8 +45,12 @@ class DevTo::CLI
       elsif input.to_i.between?(1, DevTo::Post.all.size)
         post = DevTo::Post.find(input)
         print_post(post)
+        puts "< Type OPEN to see it in the browser >"
+        post
+      elsif input == "open"
+          system("open #{post.url}")
       end
     end
-    puts "See you soon for more DEV Posts"
+    puts " -------- See you soon for more DEV Posts"
   end
 end
