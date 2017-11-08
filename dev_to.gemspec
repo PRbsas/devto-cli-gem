@@ -13,9 +13,6 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Get Posts from dev.to}
   spec.homepage      = "https://github.com/PRbsas/devto-cli-gem"
   spec.license       = "MIT"
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
 
   spec.executables   << 'devto'
   spec.require_paths = ["lib/dev_to.rb, config/environment.rb"]
