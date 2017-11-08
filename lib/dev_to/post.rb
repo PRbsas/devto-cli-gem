@@ -1,5 +1,5 @@
 class DevTo::Post
-  attr_accessor :title, :author, :tags, :url, :comments, :likes, :content
+  attr_accessor :title, :author, :tags, :url, :comments, :likes, :date, :content
 
   @@all = []
 

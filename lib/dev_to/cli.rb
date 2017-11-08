@@ -21,7 +21,7 @@ class DevTo::CLI
     puts
     puts
     puts "#{post.title}".colorize(:color => :light_white, :background => :red)
-    puts " ---- #{post.author}"
+    puts " ---- #{post.author}   ---- #{post.date}"
     puts
     puts "#{post.content}"
     puts
@@ -44,6 +44,7 @@ class DevTo::CLI
         list_posts
       elsif input.to_i.between?(1, DevTo::Post.all.size)
         post = DevTo::Post.find(input)
+        DevTo::Scraper.new.make_content(post)
         print_post(post)
         puts "< Type OPEN to see it in the browser >"
         post
