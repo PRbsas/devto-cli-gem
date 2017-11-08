@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  spec.bindir        = "exe"
+
   spec.executables   << 'devto'
   spec.require_paths = ["lib/dev_to.rb, config/environment.rb"]
 

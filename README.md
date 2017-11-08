@@ -1,5 +1,6 @@
 # DevTo
 
+[![Gem Version](https://badge.fury.io/rb/dev_to.svg)](https://badge.fury.io/rb/dev_to)
 This Ruby Gem provides a CLI to view posts from The DEV Community, [dev.to](https://dev.to/).
 
 ## Installation
@@ -10,7 +11,7 @@ This Ruby Gem provides a CLI to view posts from The DEV Community, [dev.to](http
 
 Type the below and follow the on screen prompts.
 
-    $ dev_to
+    $ devto
 
 ## Development
 
