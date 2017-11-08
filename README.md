@@ -1,6 +1,7 @@
-# DevTo
+# DevTo CLI GEM
 
-[![Gem Version](https://badge.fury.io/rb/dev_to.svg)](https://badge.fury.io/rb/dev_to)
+[![Gem Version](https://badge.fury.io/rb/dev_to.svg)](https://badge.fury.io/rb/dev_to)  
+
 This Ruby Gem provides a CLI to view posts from The DEV Community, [dev.to](https://dev.to/).
 
 ## Installation
@@ -9,15 +10,14 @@ This Ruby Gem provides a CLI to view posts from The DEV Community, [dev.to](http
 
 ## Usage
 
-Type the below and follow the on screen prompts.
+After installing the gem run the command below:
 
     $ devto
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+To run the development version of the CLI run `bundle exec bin/devto`
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
