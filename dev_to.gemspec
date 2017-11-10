@@ -13,13 +13,13 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Application that provides a Command Line Interface (CLI) to read Posts from The DEV Community, https://dev.to/}
   spec.homepage      = "https://github.com/PRbsas/devto-cli-gem"
   spec.license       = "MIT"
-  
-  spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
 
+  #spec.files = `git ls-files -z`.split("\x0").reject do |f|
+  #  f.match(%r{^(test|spec|features)/})
+  #end
+  spec.files       = Dir["**/*"].select { |f| File.file? f } - Dir['*.gem']
   spec.executables   << 'devto'
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["lib, lib/dev_to"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
