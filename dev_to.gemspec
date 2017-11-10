@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["PRbsas"]
   spec.email         = ["paularamirez0316@gmail.com"]
 
-  spec.summary       = %q{Get Posts from The DEV Community}
-  spec.description   = %q{Get Posts from dev.to}
+  spec.summary       = %q{Get Posts in yout CLI from The DEV Community}
+  spec.description   = %q{Application that provides a Command Line Interface (CLI) to read Posts from The DEV Community, https://dev.to/}
   spec.homepage      = "https://github.com/PRbsas/devto-cli-gem"
   spec.license       = "MIT"
 
