@@ -26,5 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "nokogiri", "~> 1.6", ">= 1.6.8"
   spec.add_development_dependency "pry", "~> 0.11.2"
+  spec.add_development_dependency "require_all", "~> 1.3", ">= 1.3.3"
+  
   spec.add_dependency "colorize", "~> 0.8.1"
 end
