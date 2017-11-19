@@ -21,9 +21,9 @@ class DevTo::Scraper
     end
   end
 
-  def make_content(post)
-    post_page = Nokogiri::HTML(open("#{post.url}"))
-    post.content = post_page.search("body #article-body").text.strip
-    post.date = post_page.search("#main-title .published-at").text.strip
+  def make_content(current_post)
+    post_page = Nokogiri::HTML(open("#{current_post.url}"))
+    current_post.content = post_page.search("body #article-body").text.strip
+    current_post.date = post_page.search("#main-title .published-at").text.strip
   end
 end

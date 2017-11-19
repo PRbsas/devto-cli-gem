@@ -17,22 +17,22 @@ class DevTo::CLI
     end
   end
 
-  def print_post(post)
+  def print_post(current_post)
     puts
     puts
-    puts "#{post.title}".colorize(:color => :light_white, :background => :red)
-    puts " ---- #{post.author}   ---- #{post.date}"
+    puts "#{current_post.title}".colorize(:color => :light_white, :background => :red)
+    puts " ---- #{current_post.author}   ---- #{current_post.date}"
     puts
-    puts "#{post.content}"
+    puts "#{current_post.content}"
     puts
-    puts " ---- #{post.tags.join(" · ")}     \u{1F4AC} #{post.comments}  \u{2764} #{post.likes}"
-    puts " ---- #{post.url}"
+    puts " ---- #{current_post.tags.join(" · ")}     \u{1F4AC} #{current_post.comments}  \u{2764} #{current_post.likes}"
+    puts " ---- #{current_post.url}"
     puts
   end
 
   def start
     input = nil
-    post = nil
+    current_post = nil
     while input != "exit"
       puts
       puts "< Type post NUMBER to read it >"
@@ -43,16 +43,16 @@ class DevTo::CLI
       if input == "list"
         list_posts
       elsif input.to_i.between?(1, DevTo::Post.all.size)
-        post = DevTo::Post.find(input)
-        DevTo::Scraper.new.make_content(post)
-        print_post(post)
+        current_post = DevTo::Post.find(input)
+        DevTo::Scraper.new.make_content(current_post)
+        print_post(current_post)
         puts "< Type OPEN to see it in the browser >"
-        post
+        current_post
       elsif input.to_i > DevTo::Post.all.size
         puts
         puts " -------- Please select a valid option:"
-      elsif input == "open" && post != nil
-          system("open #{post.url}")
+      elsif input == "open" && current_post != nil
+          system("open #{current_post.url}")
       end
     end
     puts " -------- See you soon for more DEV Posts"
