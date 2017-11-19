@@ -44,7 +44,11 @@ class DevTo::CLI
         list_posts
       elsif input.to_i.between?(1, DevTo::Post.all.size)
         current_post = DevTo::Post.find(input)
-        DevTo::Scraper.new.make_content(current_post)
+        if current_post.content
+          current_post
+        else
+          DevTo::Scraper.new.make_content(current_post)
+        end 
         print_post(current_post)
         puts "< Type OPEN to see it in the browser >"
         current_post
