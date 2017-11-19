@@ -19,15 +19,21 @@ class DevTo::Scraper
     }
   end
 
+  def scrape_content(post_page)
+    {
+      :date => post_page.search("#main-title .published-at").text.strip,
+      :content => post_page.search("body #article-body").text.strip
+    }
+  end
+
   def make_posts
     posts.each do |post|
       DevTo::Post.new(scrape_posts(post))
     end
   end
 
-  #def make_content(current_post)
-  #  post_page = Nokogiri::HTML(open("#{current_post.url}"))
-  #  current_post.content = post_page.search("body #article-body").text.strip
-  #  current_post.date = post_page.search("#main-title .published-at").text.strip
-  #end
+  def make_content(current_post)
+    post_page = Nokogiri::HTML(open("#{current_post.url}"))
+    current_post.add_post_attributes(scrape_content(post_page))
+  end
 end

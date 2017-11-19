@@ -8,6 +8,10 @@ class DevTo::Post
     self.class.all << self
   end
 
+  def add_post_attributes(attributes_hash)
+    attributes_hash.each {|attribute, value| self.send(("#{attribute}="), value)}
+  end
+
   def self.find(id)
     self.all[id.to_i-1]
   end
