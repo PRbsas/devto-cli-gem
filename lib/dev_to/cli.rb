@@ -23,7 +23,7 @@ class DevTo::CLI
     puts "#{current_post.title}".colorize(:color => :light_white, :background => :red)
     puts " ---- #{current_post.author}   ---- #{current_post.date}"
     puts
-    puts "#{current_post.content}"
+    puts wrap("#{current_post.content}")
     puts
     puts " ---- #{current_post.tags.join(" · ")}     \u{1F4AC} #{current_post.comments}  \u{2764} #{current_post.likes}"
     puts " ---- #{current_post.url}"
@@ -44,11 +44,7 @@ class DevTo::CLI
         list_posts
       elsif input.to_i.between?(1, DevTo::Post.all.size)
         current_post = DevTo::Post.find(input)
-        if current_post.content
-          current_post
-        else
-          DevTo::Scraper.new.make_content(current_post)
-        end 
+        current_post.content ? current_post : DevTo::Scraper.new.make_content(current_post)
         print_post(current_post)
         puts "< Type OPEN to see it in the browser >"
         current_post
@@ -61,4 +57,8 @@ class DevTo::CLI
     end
     puts " -------- See you soon for more DEV Posts"
   end
+
+  def wrap(text, width=78)
+	  text.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
+	end
 end
