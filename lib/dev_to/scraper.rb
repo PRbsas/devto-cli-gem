@@ -4,13 +4,13 @@ class DevTo::Scraper
     Nokogiri::HTML(open("https://dev.to/"))
   end
 
-  def make_posts
+  def self.make_posts
     posts.each do |post|
       DevTo::Post.new(scrape_posts(post))
     end
   end
 
-  def make_content(current_post)
+  def self.make_content(current_post)
     post_page = Nokogiri::HTML(open("#{current_post.url}"))
     current_post.add_post_attributes(scrape_content(post_page))
   end

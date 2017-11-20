@@ -1,7 +1,7 @@
 class DevTo::CLI
 
   def call
-    DevTo::Scraper.new.make_posts
+    DevTo::Scraper.make_posts
     puts
     puts "< Welcome to your DEV Community FEED >".colorize(:color => :light_white, :background => :red)
     puts
@@ -44,7 +44,7 @@ class DevTo::CLI
         list_posts
       elsif input.to_i.between?(1, DevTo::Post.all.size)
         current_post = DevTo::Post.find(input)
-        current_post.content ? current_post : DevTo::Scraper.new.make_content(current_post)
+        current_post.content ? current_post : DevTo::Scraper.make_content(current_post)
         print_post(current_post)
         puts "< Type OPEN to see it in the browser >"
         current_post
