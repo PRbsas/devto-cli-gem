@@ -4,4 +4,7 @@ require 'open-uri'
 require 'colorize'
 require 'require_all'
 
-require_all 'lib'
+require_relative '../lib/dev_to/version'
+require_relative '../lib/dev_to/cli'
+require_relative '../lib/dev_to/post'
+require_relative '../lib/dev_to/scraper'
