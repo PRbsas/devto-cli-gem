@@ -25,9 +25,9 @@ class DevTo::Scraper
         :title => post.search(".content h3").text.strip.gsub(/[[:space:]]+/," "),
         :author => post.search("h4").text.strip,
         :tags => post.search(".tags .tag").collect { |tag| tag.text.strip},
-        :url => "https://dev.to" + post.search("a").last.attr("href"),
-        :comments => post.search(".engagement-count-number").first.text.strip,
-        :likes => post.search(".engagement-count-number").last.text.strip,
+        :url => "https://dev.to#{post.search("a").last.attr("href")}",
+        :comments => post.search(".reactions-count .engagement-count-number").text.strip,
+        :likes => post.search(".comments-count .engagement-count-number").text.strip
       }
     end
 

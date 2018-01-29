@@ -60,5 +60,5 @@ class DevTo::CLI
 
   def wrap(text, width=78)
 	  text.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
-	end
+  end
 end
